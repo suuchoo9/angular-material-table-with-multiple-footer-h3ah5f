@@ -1,30 +1,41 @@
 <table mat-table [dataSource]="transactions" matSort class="table table-hover">
-  <ng-container *ngFor="let columnName of displayedColumns" [matColumnDef]="columnName">
+  <ng-container
+    *ngFor="let columnName of displayedColumns"
+    [matColumnDef]="columnName"
+  >
     <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-danger">
       {{ columnName }}
     </th>
     <td mat-cell *matCellDef="let row">{{ row[columnName] }}</td>
     <td mat-footer-cell *matFooterCellDef="let row">
-      {{columnName === 'item' ? 'Min': getMinValue(columnName)}}
+      {{ columnName === 'item' ? 'Min' : getMinValue(columnName) }}
     </td>
-
   </ng-container>
 
-  <ng-container *ngFor="let columnName of displayedColumns2" [matColumnDef]="columnName">
+  <ng-container
+    *ngFor="let columnName of displayedColumns2"
+    [matColumnDef]="columnName"
+  >
     <td mat-footer-cell *matFooterCellDef="let element; let i = index">
-      {{columnName === 'f2_item' ? 'Min_ID': getMinItem(columnName)}}
+      {{ columnName === 'f2_item' ? 'Min_ID' : getMinItem(columnName) }}
     </td>
   </ng-container>
 
-  <ng-container *ngFor="let columnName of displayedColumns3" [matColumnDef]="columnName">
+  <ng-container
+    *ngFor="let columnName of displayedColumns3"
+    [matColumnDef]="columnName"
+  >
     <td mat-footer-cell *matFooterCellDef="let element; let i = index">
-      {{columnName === 'f3_item' ? 'Min below 10': countMinItem(columnName)}}
+      {{ columnName === 'f3_item' ? 'Min below 10' : countMinItem(columnName) }}
     </td>
   </ng-container>
-
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="getRecord(row)"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="getRecord(row)"
+  ></tr>
   <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
   <tr mat-footer-row *matFooterRowDef="displayedColumns2; sticky: true"></tr>
   <tr mat-footer-row *matFooterRowDef="displayedColumns3; sticky: true"></tr>
